@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <!------------Favicon icon----------->
+    <link rel="icon" type="image" href="images/profie-favicon.png">
+
+</head>
+
+<body>
+
+    <!-- navbar-section -->
+    <header>
+        <a href="index.html" class="logo">Sunny</a> <!--𝕊𝕦𝕟𝕟𝕪 -->
+        <div class="menu-btn"></div>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="#hero" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#project">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <a href="https://www.linkedin.com/in/sunny-meghrajani-59086525a" class="nav-connect"
+            style="padding-right: 20px;">Connect with Me</a>
+    </header>
+
+    <!-- profile-section -->
+    <div class="hero" id="hero">
+        <img src="images/profile_img.png" alt="profile_img">
+        <h1>Myself<span> Sunny Meghrajani,</span>I'm a FrontEnd Developer</h1>
+        <p>I'm a Frontend Developer proficient in web development and website design</p>
+        <div class="hero-action">
+            <a href="https://www.linkedin.com/in/sunny-meghrajani-59086525a" class="hero-connect">Connect with me</a>
+            <a href="S_Resume.pdf" download="Resume.pdf" class="hero-resume" alt="Resume_3">My Resume</a>
+        </div>
+    </div>
+
+    <!-- about-section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/about-pic.jpg" alt="about-pic">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About me</h1>
+                    <p>Enthusiastic and motivated student pursuing a degree in Master’s of Computer Application.
+                        Proficient in
+                        relevant programming languages, tools, and technologies. Worked on 2 fully working projects
+                        during my
+                        bachelor degree using PHP and ASP.NET.Skilled in problem-solving and collaborative teamwork,
+                        with
+                        a passion for staying up-to-date with emerging technologies. Eager to learn and adapt new fast
+                        growing
+                        technologies and apply academic knowledge and practical skills to contribute effectively.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Front-End: </span><br>Designing frontend websites </li>
+                            <li><span>Web-Development: </span><br>Building websites</li>
+                            <li><span>Project Management: </span><br>Managing, handling projects</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>Prodigy Infotech: </span><br>Web Development Internship</li>
+                            <li><span>CognoRise Infotech: </span><br>Web Development Internship</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2023: </span><br>Bachelor of Computer Applications</li>
+                            <li><span>2020: </span><br>12th Commerce</li>
+                            <li><span>2018: </span><br>10th</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- services-section -->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title1">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>I am a passionate web designer with a focus on creating interactive
+                        and visually appealing websites, with a blend of creativity, technical
+                        expertise, & also enhancing user experience.</p>
+                </div>
+                <div>
+                    <i class="fas fa-laptop-code"></i>
+                    <h2>Front-End Design</h2>
+                    <p>I am a dedicated frontend developer passionate about crafting engaging
+                        and responsive web applications, with a strong foundation in frontend technologies & i aim to
+                        create seamless and interactive
+                        experiences for users.</p>
+                </div>
+                <div>
+                    <i class="fas fa-crop-alt"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>I'm a passionate UI/UX designer, I specialize in creating intuitive
+                        and visually appealing interfaces that prioritize user experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- project-section -->
+    <section class="project adjust" id="project">
+        <div class="title">
+            <h2>Recent Projects</h2>
+        </div>
+        <div class="content">
+            <div class="workBx">
+                <div class="imgBx">
+                    <img src="./images/Projects/Project_1.png" alt="Car Rental Website">
+                </div>
+                <div class="textBx">
+                    <h3>Project 01:<br>Online Car Rental</h3>
+                    <a href="https://github.com/sunnyscopetech/Online-Car-Rental"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+            <div class="workBx">
+                <div class="imgBx">
+                    <img src="./images/Projects/Project_2.jpg" alt="Furniture Selling Website">
+                </div>
+                <div class="textBx">
+                    <h3>Project 02:<br>Online Furniture Selling</h3>
+                    <a href="https://github.com/sunnyscopetech/Online-Furniture-Selling"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+            <div class="workBx">
+                <div class="imgBx">
+                    <img src="./images/Projects/Project3.png" alt="Clothing We">
+                </div>
+                <div class="textBx">
+                    <h3>Project 03:<br>Ecommerce Website</h3>
+                    <a href="https://github.com/sunnyscopetech/OnlineEcommerce"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+            <div class="workBx">
+                <div class="imgBx">
+                    <img src="./images/Projects/Project4.png" alt="Ride Booking">
+                </div>
+                <div class="textBx">
+                    <h3>Project 04:<br>Ride Booking Application Using React TS</h3>
+                    <a href="https://github.com/Sunny-Meghrajani/Ride_Booking"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- contact-us section -->
+    <div class="contact" id="contact">
+        <div class="contact-title">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-section">
+            <div class="contact-left">
+                <h1>Let's get in touch</h1>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <img src="images/mail_icon.svg">
+                        <p>sunnymeghrajani41@gmail.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <img src="images/call_icon.svg">
+                        <p>+91 9313414276</p>
+                    </div>
+                    <div class="contact-detail">
+                        <img src="images/location_icon.svg">
+                        <p>Ahmedabad, Gujarat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p class="copyright">Made by <span>@ Sunny Meghrajani - 2024</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
