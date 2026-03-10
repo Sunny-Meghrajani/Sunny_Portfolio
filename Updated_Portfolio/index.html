@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="config.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#050505] text-white overflow-x-hidden">
+
+    <canvas id="hero-canvas" class="fixed top-0 left-0 -z-10 outline-none"></canvas>
+
+    <!-- Navbar -->
+    <nav id="navbar"
+        class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 px-6 py-4 rounded-2xl flex justify-between items-center opacity-0 -translate-y-10">
+        <div class="text-2xl tracking-tighter">
+            <a href="index.html" class="logo !pl-0 md:!pl-10">Sunny</a>
+        </div>
+
+        <ul class="hidden md:flex space-x-6 lg:space-x-10 font-medium text-xs uppercase tracking-[0.2em] text-gray-400">
+            <a href="#about">
+                <li class="transition-all">About</li>
+            </a>
+            <a href="#skills">
+                <li class="transition-all">Skills</li>
+            </a>
+            <a href="#projects">
+                <li class="transition-all">Projects</li>
+            </a>
+            <a href="#experience">
+                <li class="transition-all">Experience</li>
+            </a>
+            <a href="#contact">
+                <li class="transition-all">Contact</li>
+            </a>
+        </ul>
+
+        <div class="flex items-center gap-4">
+            <a href="#contact" class="hidden md:block">
+                <button
+                    class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold hover:bg-cyan-500 hover:text-white transition-all">
+                    Let's Connect
+                </button>
+            </a>
+
+            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[60] flex flex-col translate-x-full transition-transform duration-500 md:hidden">
+
+            <div class="flex justify-end p-8">
+                <button id="menu-close" class="text-white text-3xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto flex flex-col items-center justify-center gap-6 pb-20">
+                <a href="#about" class="mobile-link text-xl font-bold text-white uppercase tracking-widest">About</a>
+                <a href="#skills" class="mobile-link text-xl font-bold text-white uppercase tracking-widest">Skills</a>
+                <a href="#projects"
+                    class="mobile-link text-xl font-bold text-white uppercase tracking-widest">Projects</a>
+                <a href="#experience"
+                    class="mobile-link text-xl font-bold text-white uppercase tracking-widest">Experience</a>
+                <a href="#contact"
+                    class="mobile-link text-xl font-bold text-white uppercase tracking-widest">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero-section -->
+    <section class="relative h-screen flex flex-col items-center justify-center text-center px-6">
+        <div class="z-10 select-none">
+            <span id="hero-tag"
+                class="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-[10px] uppercase tracking-[0.3em] text-blue-400 mb-6 opacity-0 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                Available for Freelance
+            </span>
+
+            <h1 id="hero-title" class="text-6xl md:text-[120px] font-black tracking-tighter leading-[0.9] mb-8">
+                <div class="hero-line opacity-0 text-white">Myself</div>
+                <div
+                    class="hero-line opacity-0 name-hover text-transparent bg-clip-text bg-gradient-to-b from-cyan-400 to-white">
+                    Sunny Meghrajani
+                </div>
+            </h1>
+
+            <p id="hero-p"
+                class="max-w-lg mx-auto text-gray-400 text-sm md:text-lg leading-relaxed opacity-0 translate-y-4">
+                I'm a Full Stack Developer proficient in web development and website designing
+            </p>
+
+            <div id="hero-btns"
+                class="flex flex-row justify-center gap-4 mt-12 mb-20 opacity-0 translate-y-4 z-20 relative">
+                <a href="Sunny_CV.pdf" target="_blank"
+                    class="px-8 py-3 rounded-full bg-cyan-500 text-white font-bold text-sm uppercase tracking-widest hover:bg-cyan-400 hover:scale-105 transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                    <i class="fa-solid fa-file mr-2 text-lg transition-colors"></i>
+                    My CV
+                </a>
+
+                <a href="https://www.linkedin.com/in/sunny-meghrajani-59086525a" target="_blank"
+                    class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white font-bold text-sm uppercase tracking-widest hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all group">
+                    <i
+                        class="fa-brands fa-linkedin mr-2 text-lg text-cyan-400 group-hover:text-white transition-colors"></i>
+                    Connect with me
+                </a>
+            </div>
+        </div>
+
+        <div id="scroll-indicator" class="absolute bottom-10 flex flex-col items-center gap-2 opacity-0">
+            <span class="text-[10px] uppercase tracking-widest opacity-50">Scroll</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent origin-top scale-y-0" id="scroll-line">
+            </div>
+        </div>
+    </section>
+
+    <!-- About-section -->
+    <section id="about" class="min-h-screen relative flex items-center px-10 md:px-24 overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center w-full max-w-7xl mx-auto">
+
+            <div id="about-content" class="opacity-0 translate-y-20">
+                <h2 class="text-blue-500 font-mono tracking-[0.3em] uppercase text-lg mb-4">01. About me</h2>
+                <h3 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">Who am I?</h3>
+                <div class="space-y-6 text-gray-400 text-lg leading-relaxed">
+                    <p>Enthusiastic and motivated MCA student with hands-on project experience in fullstack
+                        development.
+                        Built two working web projects during my education journey using PHP and ASP.NET,
+                        and one during master’s using Django (Mineral Water Distribution System).
+                        Proficient in Frontend Designing, Web Development, and working with databases
+                        like MySQL, MongoDB, and PostgreSQL
+                        Strong understanding of project development lifecycle, worked on Abhivyakti City
+                        Arts Project during Jr. Developer Post.
+                        Eager to learn, collaborate in team environments, and deliver results aligned with
+                        project requirements.
+                    </p>
+                </div>
+            </div>
+
+            <div id="about-visual" class="relative perspective-container flex justify-center md:justify-end">
+                <div id="about-image-card"
+                    class="relative w-[300px] h-[400px] md:w-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/10 opacity-0">
+                    <img src="/images/about-pic.jpg" alt="profile pic"
+                        class="w-full h-full object-cover transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills-section -->
+    <section id="skills" class="py-32 bg-black overflow-hidden flex flex-col gap-10">
+        <div class="skills-wrapper-1 flex whitespace-nowrap border-y border-white/5 py-10">
+            <div
+                class="skills-group-1 flex items-center gap-20 text-[7vw] font-black uppercase tracking-tighter text-white/10">
+                <span>Javascript</span> <span class="text-blue-500">.</span>
+                <span>React JS</span> <span class="text-blue-500">.</span>
+                <span>Node JS</span> <span class="text-blue-500">.</span>
+                <span>Tailwind CSS</span> <span class="text-blue-500">.</span>
+            </div>
+            <div
+                class="skills-group-1 flex items-center gap-20 text-[7vw] font-black uppercase tracking-tighter text-white">
+                <span>Javascript</span> <span class="text-blue-500">.</span>
+                <span>React JS</span> <span class="text-blue-500">.</span>
+                <span>Node JS</span> <span class="text-blue-500">.</span>
+                <span>Tailwind CSS</span> <span class="text-blue-500">.</span>
+            </div>
+        </div>
+        <div class="skills-wrapper-2 flex whitespace-nowrap border-b border-white/5 py-10">
+            <div
+                class="skills-group-2 flex items-center gap-20 text-[7vw] font-black uppercase tracking-tighter text-white">
+                <span>FrontEnd Designing</span> <span class="text-blue-500">.</span>
+                <span>Web Development</span> <span class="text-blue-500">.</span>
+                <span>MERN Stack</span> <span class="text-blue-500">.</span>
+                <span>Full Stack</span> <span class="text-blue-500">.</span>
+            </div>
+            <div
+                class="skills-group-2 flex items-center gap-20 text-[7vw] font-black uppercase tracking-tighter text-white">
+                <span>FrontEnd Designing</span> <span class="text-blue-500">.</span>
+                <span>Web Development</span> <span class="text-blue-500">.</span>
+                <span>MERN Stack</span> <span class="text-blue-500">.</span>
+                <span>Full Stack</span> <span class="text-blue-500">.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project-sections -->
+    <section id="projects" class="py-32 px-6 md:px-24">
+        <h2 class="text-lg font-mono tracking-[0.5em] text-blue-500 uppercase mb-20">Recent Projects</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            <div
+                class="project-card group relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900">
+                <img src="/images/Projects/Project6.png"
+                    class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                <div
+                    class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                    <h3 class="text-3xl font-bold">Smart Blog App</h3>
+                    <a href="https://github.com/Sunny-Meghrajani/Smart_BlogApp">
+                        <p class="text-gray-400 text-sm mt-2">React JS, A.I and SEO</p>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="project-card group relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900">
+                <img src="images/Projects/Project5.png"
+                    class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                <div
+                    class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                    <h3 class="text-3xl font-bold">Realtime ChatApp</h3>
+                    <a href="https://github.com/Sunny-Meghrajani/React_ChatApp">
+                        <p class="text-gray-400 text-sm mt-2">React JS, Socket.io, Cloudinary...</p>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="project-card group relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900">
+                <img src="/images/Projects/Project4.png"
+                    class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                <div
+                    class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                    <h3 class="text-3xl font-bold">Ride Booking App</h3>
+                    <a href="https://github.com/Sunny-Meghrajani/Ride_Booking">
+                        <p class="text-gray-400 text-sm mt-2">React JS, TypeScript, Django(Backend)</p>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="project-card group relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900">
+                <img src="/images/Projects/Project3.png"
+                    class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                <div
+                    class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                    <h3 class="text-3xl font-bold">Online Ecommerce</h3>
+                    <a href="https://github.com/Sunny-Meghrajani/OnlineEcommerce">
+                        <p class="text-gray-400 text-sm mt-2">PHP and MYSQL</p>
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="project-card group relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900">
+                <img src="/images/Projects/Project_2.jpg"
+                    class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                <div
+                    class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                    <h3 class="text-3xl font-bold">Online Furniture</h3>
+                    <p class="text-gray-400 text-sm mt-2">ASP.Net and MYSQL (B.C.A)</p>
+                </div>
+            </div>
+
+            <div
+                class="project-card group relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-zinc-900">
+                <img src="/images/Projects/Project_1.png"
+                    class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                <div
+                    class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent">
+                    <h3 class="text-3xl font-bold">Car Rental</h3>
+                    <p class="text-gray-400 text-sm mt-2">PHP and MYSQL (B.C.A)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiance-section -->
+    <section id="experience" class="py-32 relative px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-lg font-mono tracking-[0.5em] text-blue-500 uppercase text-center mb-24">Education & Journey
+            </h2>
+
+            <div class="relative">
+                <div id="timeline-line"
+                    class="absolute left-1/2 top-0 w-[2px] h-0 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent -translate-x-1/2 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                </div>
+
+                <div class="timeline-item flex justify-end mb-32 w-full relative">
+                    <div
+                        class="milestone-dot absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full z-10 scale-0 border-4 border-blue-600 shadow-[0_0_20px_white]">
+                    </div>
+                    <div
+                        class="timeline-content w-full md:w-[45%] p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 opacity-0 translate-x-10 md:translate-x-20">
+                        <span class="text-blue-400 font-mono text-xs">2025 - PRESENT</span>
+                        <h3 class="text-2xl font-bold mt-2">Stimulus Co | Junior Software Engineer</h3>
+                        <p class="text-gray-400 mt-4 leading-relaxed">Working as a Junior Software Developer, building
+                            high-performance applications and interactive websites.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item flex justify-start mb-32 w-full relative">
+                    <div
+                        class="milestone-dot absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full z-10 scale-0 border-4 border-purple-600 shadow-[0_0_20px_white]">
+                    </div>
+                    <div
+                        class="timeline-content w-full md:w-[45%] p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 opacity-0 translate-x-10 md:translate-x-20">
+                        <span class="text-purple-400 font-mono text-xs">Jan 2025 - May 2025</span>
+                        <h3 class="text-2xl font-bold mt-2">Moweb Technologies | Full Stack Developer Intern</h3>
+                        <p class="text-gray-400 mt-4 leading-relaxed">Focused on Frontend architecture.
+                            Learned React Js and its library to built intractive and modern Full Stack Websites.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item flex justify-end mb-32 w-full relative">
+                    <div
+                        class="milestone-dot absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full z-10 scale-0 border-4 border-blue-600 shadow-[0_0_20px_white]">
+                    </div>
+                    <div
+                        class="timeline-content w-full md:w-[45%] p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 opacity-0 translate-x-10 md:translate-x-20">
+                        <span class="text-blue-400 font-mono text-xs">2023 - 2025</span>
+                        <h3 class="text-2xl font-bold mt-2">Master's of Computer Application | GLS University</h3>
+                        <p class="text-gray-400 mt-4 leading-relaxed">Advanced Computer Science studies with a focus on
+                            Web Technologies, Modern Languages and more.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item flex justify-start w-full relative">
+                    <div
+                        class="milestone-dot absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full z-10 scale-0 border-4 border-purple-600 shadow-[0_0_20px_white]">
+                    </div>
+                    <div
+                        class="timeline-content w-full md:w-[45%] p-6 md:p-8 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 opacity-0 translate-x-10 md:translate-x-20">
+                        <span class="text-purple-400 font-mono text-xs">2020 - 2023</span>
+                        <h3 class="text-2xl font-bold mt-2">Bachelor's of Computer Application | C.Z.M.G Haria College
+                        </h3>
+                        <p class="text-gray-400 mt-4 leading-relaxed">The foundation of my computer journey. Where I
+                            first fell in love with code and web development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect-section -->
+    <section id="contact" class="min-h-screen py-32 px-6 md:px-24 flex items-center justify-center overflow-hidden">
+        <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
+
+            <div id="contact-3d-container"
+                class="relative rounded-[40px] overflow-hidden border border-white/10 glass-card min-h-[400px]">
+                <div id="spline-loader"
+                    class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/50 backdrop-blur-md">
+                    <div class="w-10 h-10 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
+                    <p class="text-white text-[10px] uppercase tracking-[0.2em] mt-4 opacity-50">Loading...</p>
+                </div>
+
+                <spline-viewer id="contact-spline"
+                    url="https://prod.spline.design/0mZO7XJlwzGTgf9R/scene.splinecode"></spline-viewer>
+            </div>
+
+            <div id="contact-form-container"
+                class="glass-card p-8 md:p-12 rounded-[40px] border border-white/10 flex flex-col justify-center">
+                <form id="contact-form" class="flex flex-col gap-6">
+                    <div class="group">
+                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-2">Name</label>
+                        <input type="text" name="from_name" placeholder="Your name" required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none focus:border-blue-500 transition-all text-white placeholder:text-gray-700">
+                    </div>
+                    <div class="group">
+                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-2">Email</label>
+                        <input type="email" name="reply_to" placeholder="john@example.com" required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none focus:border-blue-500 transition-all text-white placeholder:text-gray-700">
+                    </div>
+                    <div class="group">
+                        <label class="text-[10px] uppercase tracking-[0.2em] text-gray-500 ml-2">Message</label>
+                        <textarea name="message" rows="4" placeholder="Your message..." required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-2 outline-none focus:border-blue-500 transition-all text-white placeholder:text-gray-700 resize-none"></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn"
+                        class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-5 rounded-2xl transition-all hover:-translate-y-1">
+                        SEND MESSAGE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
